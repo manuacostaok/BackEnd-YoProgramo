@@ -37,19 +37,22 @@ public class PersonaControlador {
     
     
     @PostMapping("/crear")
-    public void save(@RequestBody Persona persona){
+    public String save(@RequestBody Persona persona){
         IPersonaService.savePersona(persona);
+        return "La persona fue creada correctamente!";
     }
     
    
     @DeleteMapping("/borrar/{id}")
-    public void delete(@PathVariable Long id){
+    public String delete(@PathVariable Long id){
         IPersonaService.deletePersona(id);
+        return "La persona fue borrada correctamente!";
     }
     
     @PutMapping("/editar")
-    public void edit(@RequestBody Persona persona){
+    public String edit(@RequestBody Persona persona){
         IPersonaService.savePersona(persona);
+        return "La persona fue editada correctamente!";
     }
    
        

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,46 +22,40 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins="http://localhost:4200")//direccion del front de angular
 public class ExperienciaControlador {
    
-    @Autowired
-    ExperienciaService expServ;
+     @Autowired
+    ExperienciaService sExperiencia;
     
-    @GetMapping("/lista")
-    @ResponseBody
+    
+    @GetMapping ("/lista")
     public ResponseEntity<List<Experiencia>> lista(){
-        List<Experiencia> lista=expServ.verExperiencias();
-        return new ResponseEntity(lista, HttpStatus.OK);
+        List<Experiencia> list = sExperiencia.list();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
     
-    @GetMapping("/ver/{id}")
-    @ResponseBody
-    public ResponseEntity <Experiencia> getById(@PathVariable("id") int id){
-        Experiencia expe =expServ.buscarExperiencia(id);
-        return new ResponseEntity(expe,HttpStatus.OK);
+      //lista de experiencias por id de persona
+    @GetMapping ("/persona/{id}/lista")
+    public List <Experiencia> listaPer(@PathVariable Long id){
+        return sExperiencia.findByPersonaId(id);    
+        }
+    
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Experiencia> detail(@PathVariable("id") int id){
+        Experiencia expe = sExperiencia.getOne(id);
+        return new ResponseEntity(expe, HttpStatus.OK);
     }
     
-    @PostMapping("/crear")
-    @ResponseBody
-    public String crearExperiencia(@RequestBody Experiencia exp){
-        expServ.crearExperiencia(exp);
-        return "La experiencia fue creada correctamente!";
+    @PostMapping("/create")
+    public void save(@RequestBody Experiencia expe) {      
+        sExperiencia.save(expe);
     }
     
-    @DeleteMapping ("/borrar/{id}")
-    public String eliminarExperiencia(@PathVariable int id){
-            expServ.borrarExperiencia(id);
-        return "La experiencia fue borrada correctamente!";
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable ("id") int id){
+        sExperiencia.delete(id);
     }
     
-    @PutMapping("/editar")
-    public String updateExperiencia(@RequestBody Experiencia exp){
-        expServ.editarExperiencia(exp);
-        return "La edicion fue efectuada correctamente!";
+    @PutMapping("/update")
+    public void edit(@RequestBody Experiencia expe) {      
+        sExperiencia.save(expe);
     }
-    
-    @PutMapping("/editar/{id}")
-    public String editarExperiencia(@PathVariable ("id") int id, Experiencia exp){
-        expServ.editarExperiencia(exp);
-        return "La actualizacion por ID fue efectuada correctamente!";   }
-
-    
 }

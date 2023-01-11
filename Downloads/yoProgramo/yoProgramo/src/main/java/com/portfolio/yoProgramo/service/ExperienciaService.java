@@ -13,28 +13,34 @@ import org.springframework.stereotype.Service;
 public class ExperienciaService {
     
     @Autowired
-    ExperienciaRepository expServ;
+     ExperienciaRepository rExperiencia;
     
-    
-    public List <Experiencia> verExperiencias(){
-        List<Experiencia> listaExperiencia=expServ.findAll();
-        return listaExperiencia;
+    public List<Experiencia> list(){
+        return rExperiencia.findAll();
     }
     
-    public void crearExperiencia(Experiencia p){
-        expServ.save(p);
+    public Experiencia getOne(int id){
+        Experiencia expe = rExperiencia.findById(id).orElse(null);
+        return expe;
+    }
+       
+    
+    public void save(Experiencia expe){
+        rExperiencia.save(expe);
     }
     
-    public void borrarExperiencia(int id){
-        expServ.deleteById(id);
+     public void delete(int id){
+        rExperiencia.deleteById(id);
     }
     
-    public Experiencia buscarExperiencia(int id){
-        Experiencia exp=expServ.findById(id).orElse(null);
-        return exp;
+    public void edit(Experiencia expe){
+        rExperiencia.save(expe);
     }
     
-    public void editarExperiencia(Experiencia exp) {
-       expServ.save(exp);
+    //busca lista de relojes por la id de la persona
+    public List<Experiencia> findByPersonaId(Long personaId) {
+        return rExperiencia.findByPersonaId(personaId);
     }
+
+    
 }

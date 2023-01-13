@@ -14,32 +14,32 @@ import org.springframework.stereotype.Service;
 public class EstudioService {
     
     @Autowired
-    public EstudioRepository estudioRepo;
+    public EstudioRepository rEstudio;
     
-    
-    public List <Estudio> verEstudios(){
-        List<Estudio> listaEstudios=estudioRepo.findAll();
-        return listaEstudios;
+    public List<Estudio> list(){
+        return rEstudio.findAll();
     }
     
-    public void crearEstudio(Estudio e){
-        estudioRepo.save(e);
+    public Estudio getOne(int id){
+        Estudio expe = rEstudio.findById(id).orElse(null);
+        return expe;
     }
     
-    public void borrarEstudio(int id){
-        estudioRepo.deleteById(id);
+    public void save(Estudio estu){
+        rEstudio.save(estu);
     }
     
-    public Estudio buscarEstudio(int id){
-        Estudio estudio=estudioRepo.findById(id).orElse(null);
-        return estudio;
+     public void delete(int id){
+        rEstudio.deleteById(id);
     }
     
-    public void editarEstudio(Estudio estudio) {
-       estudioRepo.save(estudio);
+    public void edit(Estudio estu){
+        rEstudio.save(estu);
     }
-
-   
-   
+    
+     //busca lista de relojes por la id de la persona
+    public List<Estudio> findByPersonaId(Long personaId) {
+        return rEstudio.findByPersonaId(personaId);
+    }
     
 }

@@ -5,6 +5,8 @@ import com.portfolio.yoProgramo.entity.Estudio;
 import com.portfolio.yoProgramo.service.EstudioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,38 +23,40 @@ import org.springframework.web.bind.annotation.RestController;
 public class EstudioControlador {
     
     @Autowired
-    private EstudioService estudioServ;
+    private EstudioService sEstudio;
     
     
-    @GetMapping("/lista")
-    @ResponseBody
-    public List <Estudio> verEstudios(){
-        return estudioServ.verEstudios();
+    @GetMapping ("/lista")
+    public ResponseEntity<List<Estudio>> list(){
+        List<Estudio> list = sEstudio.list();
+        return new ResponseEntity(list, HttpStatus.OK);
     }
     
-    @GetMapping("/ver/{id}")
-    @ResponseBody
-    public Estudio verEstudio(@PathVariable int id){
-        return estudioServ.buscarEstudio(id);
+      //lista de relojes por id de persona
+    @GetMapping ("/persona/{id}/lista")
+    public List <Estudio> listaPer(@PathVariable Long id){
+        return sEstudio.findByPersonaId(id);    
+        }
+    
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<Estudio> detail(@PathVariable("id") int id){
+        Estudio estu = sEstudio.getOne(id);
+        return new ResponseEntity(estu, HttpStatus.OK);
     }
     
-    @PostMapping("/crear")
-    public String agregarEstudio(@RequestBody Estudio est){
-        estudioServ.crearEstudio(est);
-        return "El estudio fue creado correctamente!";
+    @PostMapping("/create")
+    public void save(@RequestBody Estudio estu) {      
+        sEstudio.save(estu);
     }
     
-    @DeleteMapping ("/borrar/{id}")
-    public String eliminarEstudio(@PathVariable int id){
-        estudioServ.borrarEstudio(id);
-        return "El estudio fue borrado correctamente!";
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable ("id") int id){
+        sEstudio.delete(id);
     }
     
-    @PutMapping("/editar")
-    public String updateEstudio(@RequestBody Estudio est){
-        estudioServ.editarEstudio(est);
-        return "Los cambios fueron efectuados correctamente!";
+    @PutMapping("/update")
+    public void edit(@RequestBody Estudio estu) {      
+        sEstudio.save(estu);
     }
-    
     
 }

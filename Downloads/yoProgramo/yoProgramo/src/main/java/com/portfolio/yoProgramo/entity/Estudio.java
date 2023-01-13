@@ -138,9 +138,6 @@ public class Estudio {
     public void setPersonaid(Long personaid) {
         this.personaid = personaid;
     }
-
-   
-
    
     
 }

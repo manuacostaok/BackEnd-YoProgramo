@@ -13,28 +13,32 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class ImpPersonaService implements IPersonaService {
-    @Autowired PersonaRepository ipersonaRepository;
+public class ImpPersonaService  {
+    @Autowired PersonaRepository rPersona;
     
-    @Override
-    public List<Persona> getPersona() {
-        List<Persona> persona = ipersonaRepository.findAll();
-        return persona;
+    
+    
+   public List<Persona> list(){
+        return rPersona.findAll();
     }
-
-    @Override
-    public void savePersona(Persona persona) {
-        ipersonaRepository.save(persona);
-    }
-
-    @Override
-    public void deletePersona(Long id) {
-        ipersonaRepository.deleteById(id);
-    }
-
-    @Override
-    public Persona findPersona(Long id) {
-        Persona persona = ipersonaRepository.findById(id).orElse(null);
-        return persona;
-    }
+    
+    public Persona getOne(Long id){
+        Persona perso = rPersona.findById(id).orElse(null);
+        return perso;
+    }    
+   
+    
+    public void save(Persona pers){
+        rPersona.save(pers);
+    }      
+    
+   
+     public void delete(Long id){
+        rPersona.deleteById(id);
+    }    
+     
+     public void edit(Persona pers){
+        rPersona.save(pers);
+    }  
+       
 }

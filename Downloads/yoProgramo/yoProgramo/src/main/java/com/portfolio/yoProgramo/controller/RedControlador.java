@@ -1,8 +1,11 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.portfolio.yoProgramo.controller;
 
-import com.portfolio.yoProgramo.entity.Habilidad;
-import com.portfolio.yoProgramo.service.HabilidadService;
+import com.portfolio.yoProgramo.entity.Red;
+import com.portfolio.yoProgramo.service.RedService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,50 +21,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 @RestController
-@RequestMapping("habilidad")//localhost:8080/habilidad
-@CrossOrigin(origins="http://localhost:4200")//direccion del front de angular
-public class HabilidadControlador {
-   
+@RequestMapping("red")
+@CrossOrigin(origins="http://localhost:4200")
+public class RedControlador {
     @Autowired
-    private HabilidadService sHabilidad;
+    RedService sRed;
+    
     
     @GetMapping ("/lista")
-    public ResponseEntity<List<Habilidad>> lista(){
-        List<Habilidad> list = sHabilidad.list();
+    public ResponseEntity<List<Red>> list(){
+        List<Red> list = sRed.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
-     //lista de relojes por id de persona
+      //lista de relojes por id de persona
     @GetMapping ("/persona/{id}/lista")
-    public List <Habilidad> listaPer(@PathVariable Long id){
-        return sHabilidad.findByPersonaId(id);    
+    public List <Red> findByPersonaId(@PathVariable Long id){
+        return sRed.findByPersonaId(id);    
         }
     
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Habilidad> detail(@PathVariable("id") int id){
-        Habilidad habilidad = sHabilidad.getOne(id);
-        return new ResponseEntity(habilidad, HttpStatus.OK);
+    public ResponseEntity<Red> getById(@PathVariable("id") int id){
+        Red red = sRed.getOne(id);
+        return new ResponseEntity(red, HttpStatus.OK);
     }
     
     @PostMapping("/create")
-    public void save(@RequestBody Habilidad habi) {
-        sHabilidad.save(habi);
+    public void create(@RequestBody Red red) {      
+        sRed.save(red);
     }
     
-    
-    @DeleteMapping("/delete/{id}")
+      @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable ("id") int id){
-        sHabilidad.delete(id);
+        sRed.delete(id);
     }
     
     @PutMapping("/update")
-    public void edit(@RequestBody Habilidad habi) {
-        sHabilidad.save(habi);
+    public void edit(@RequestBody Red red) {      
+        sRed.save(red);
     }
-
     
-
-
 }

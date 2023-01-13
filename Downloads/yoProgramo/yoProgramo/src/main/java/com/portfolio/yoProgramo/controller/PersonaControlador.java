@@ -25,34 +25,31 @@ public class PersonaControlador {
     
     @GetMapping ("/lista")
     public ResponseEntity<List<Persona>> list(){
-        List<Persona> list = IPersonaService.getPersona();
+        List<Persona> list = IPersonaService.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
     
-    @GetMapping("/ver/{id}")
+    @GetMapping("/detail/{id}")
     public ResponseEntity<Persona> detail(@PathVariable("id") Long id){
-        Persona perso = IPersonaService.findPersona(id);
+        Persona perso = IPersonaService.getOne(id);
         return new ResponseEntity(perso, HttpStatus.OK);
     }       
     
     
-    @PostMapping("/crear")
-    public String save(@RequestBody Persona persona){
-        IPersonaService.savePersona(persona);
-        return "La persona fue creada correctamente!";
+    @PostMapping("/create")
+    public void save(@RequestBody Persona persona){
+        IPersonaService.save(persona);
     }
     
    
-    @DeleteMapping("/borrar/{id}")
-    public String delete(@PathVariable Long id){
-        IPersonaService.deletePersona(id);
-        return "La persona fue borrada correctamente!";
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id){
+        IPersonaService.delete(id);
     }
     
-    @PutMapping("/editar")
-    public String edit(@RequestBody Persona persona){
-        IPersonaService.savePersona(persona);
-        return "La persona fue editada correctamente!";
+    @PutMapping("/update")
+    public void edit(@RequestBody Persona persona){
+        IPersonaService.edit(persona);
     }
    
        

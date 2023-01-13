@@ -13,28 +13,32 @@ import org.springframework.stereotype.Service;
 @Transactional//persistencia en base de datos
 public class HabilidadService {
     @Autowired
-    public HabilidadRepository habServ;
+    public HabilidadRepository rHabilidad;
     
     
-    public List <Habilidad> verHabilidades(){
-        List<Habilidad> listaHabilidad=habServ.findAll();
-        return listaHabilidad;
+    public List<Habilidad> list(){
+        return rHabilidad.findAll();
     }
     
-    public void crearHabilidad(Habilidad h){
-        habServ.save(h);
+    public Habilidad getOne(int id){
+        return rHabilidad.findById(id).orElse(null);
+    }
+        
+    
+    public void save(Habilidad habi){
+        rHabilidad.save(habi);
     }
     
-    public void borrarHabilidad(int id){
-        habServ.deleteById(id);
+     public void delete(int id){
+        rHabilidad.deleteById(id);
     }
     
-    public Habilidad buscarHabilidad(int id){
-        Habilidad hab=habServ.findById(id).orElse(null);
-        return hab;
+     public void edit(Habilidad habi){
+        rHabilidad.save(habi);
     }
     
-    public void editarHabilidad(Habilidad hab) {
-       habServ.save(hab);
+     //busca lista de relojes por la id de la persona
+    public List<Habilidad> findByPersonaId(Long personaId) {
+        return rHabilidad.findByPersonaId(personaId);
     }
 }

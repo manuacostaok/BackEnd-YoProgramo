@@ -34,7 +34,7 @@ public class Persona {
     
     @Lob
     @NotNull
-    @Size(min = 25, max = 5000, message = "no cumple con la longitud")
+    @Size(min = 50, max = 5000, message = "no cumple con la longitud")
     private String sobreMi;
     
     @Size(min = 1, max = 400, message = "no cumple con la longitud")
@@ -50,6 +50,8 @@ public class Persona {
     private String curriculum;
     
    //relacion y para que borre si la persona no existe
+    @OneToMany(mappedBy="persona", cascade=CascadeType.ALL)
+    private List<Red> redes; 
     
       //relacion y para que borre si la persona no existe
     @OneToMany(mappedBy="persona", cascade=CascadeType.ALL)
@@ -155,6 +157,15 @@ public class Persona {
     }
     
     @JsonManagedReference
+    public List<Red> getRedes() {
+        return redes;
+    }
+
+    public void setRedes(List<Red> redes) {
+        this.redes = redes;
+    }
+    
+    @JsonManagedReference
     public List<Proyecto> getProyectos() {
         return proyectos;
     }
@@ -186,7 +197,4 @@ public class Persona {
     public void setExperiencias(List<Experiencia> experiencias) {
         this.experiencias = experiencias;
     }
-  
-    
-    
 }

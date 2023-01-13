@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("estudio")//localhost:8080/estudio
+@RequestMapping("estudios")//localhost:8080/estudio
 @CrossOrigin(origins="http://localhost:4200")//direccion del front de angular
 public class EstudioControlador {
     

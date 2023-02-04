@@ -34,7 +34,7 @@ public class Persona {
     
     @Lob
     @NotNull
-    @Size(min = 50, max = 5000, message = "no cumple con la longitud")
+    @Size(min = 20, max = 5000, message = "no cumple con la longitud")
     private String sobreMi;
     
     @Size(min = 1, max = 400, message = "no cumple con la longitud")

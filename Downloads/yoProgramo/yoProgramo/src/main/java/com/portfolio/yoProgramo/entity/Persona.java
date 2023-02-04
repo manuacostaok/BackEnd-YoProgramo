@@ -81,7 +81,6 @@ public class Persona {
         this.img = img;
         this.email = email;
         this.curriculum = curriculum;
-        //redes= new ArrayList();
     }
 
     public Long getId() {

@@ -30,7 +30,7 @@ public class Proyecto {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fin; 
     
-    @Lob //longtext
+    @Lob //para indicar que es un texto largo
     @NotNull
     private String descripcion;
     

@@ -8,7 +8,6 @@ com\portfolio\yoProgramo\security\enums\entity\UsuarioPrincipal.class
 com\portfolio\yoProgramo\service\ExperienciaService.class
 com\portfolio\yoProgramo\security\repository\iRolRepository.class
 com\portfolio\yoProgramo\security\service\UsuarioService.class
-com\portfolio\yoProgramo\WebConfig.class
 com\portfolio\yoProgramo\security\enums\entity\Usuario.class
 com\portfolio\yoProgramo\security\jwt\JwtEntryPoint.class
 com\portfolio\yoProgramo\controller\ExperienciaControlador.class

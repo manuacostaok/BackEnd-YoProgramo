@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("proyecto")//localhost:8080/proyilidad
-@CrossOrigin(origins="http://localhost:4200")//direccion del front de angular
+@CrossOrigin(origins={"https://portfoliomanuacosta.web.app","http://localhost:4200"})//direccion del front de angular
 public class ProyectoControlador {
     
     @Autowired

@@ -1,4 +1,4 @@
-FROM amazoncorretto:11-alpine-jdk
-MAINTAINER ManuAcosta
-COPY target/yoProgramo-0.0.1-SNAPSHOT.jar  portfolioManuAcosta-app.jar
-ENTRYPOINT ["java","-jar","/portfolioManuAcosta-app.jar"]
+FROM amazoncorretto:8-alpine-jdk
+
+COPY target/yoProgramo-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]

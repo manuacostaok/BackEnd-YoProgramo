@@ -15,7 +15,7 @@ Este proyecto es una <b>API REST</b>.
 
 ## Construido con 🛠️
 
-* SpringBoot 3.0.1
+* SpringBoot 2.7.7
 * Java 17
 
 ## Autor ✒️

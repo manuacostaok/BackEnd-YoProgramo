@@ -1,14 +1,15 @@
 <div class="modal fade" id="educacionModalAdd" tabindex="-1" aria-labelledby="educacionModalAdd" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="educacionModalAdd">Agregar Educación</h5>
-          <button type="button" data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()"></button>
-        </div>
+        
+        
         <form [formGroup]="form" (ngSubmit)="onEnviar($event)" name="educacionForm"> 
         <div class="modal-body">
+          <h5 class="modal-title" id="edcuacionModalAdd" >Agregar Educacion</h5>
+
                 <!-- formulario de educación-->
                 <div class="mb-3">
+                  
                   <label for="educacionImg" class="form-label">Agregar Logo de Instituto</label>
                   <input class="form-control" type="url"  placeholder="URL de imagen" formControlName="imagen" >
                 </div>

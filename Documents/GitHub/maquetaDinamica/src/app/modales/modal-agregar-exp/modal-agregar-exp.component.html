@@ -2,13 +2,13 @@
 <div class="modal fade" id="experienciaModalAdd" tabindex="-1" aria-labelledby="experienciaModalAdd" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="experienciaModalAdd">Agregar Experiencia</h5>
-          <button type="button"  data-bs-dismiss="modal" aria-label="Close" (click)="limpiar()"></button>
-        </div>
+        
+          
+          
         <form  [formGroup]="form" (ngSubmit)="onEnviar($event)" name="experienciaFormAdd"> 
           <!-- formulario de experiencia-->
       <div class="modal-body">
+        <h5 class="modal-title" id="experienciaModalAdd" >Agregar Experiencia</h5>
               <div class="mb-3">
                 <label for="imagen" class="form-label">Agregar Logo de Empresa</label>
                 <input class="form-control" type="url"  formControlName="imagen" placeholder="Ingrese URL">
@@ -58,7 +58,7 @@
                 <button type="submit" class="btn btnLogin btn-dark">Agregar</button>          
               </div>
 
-          </form>>
+          </form>
             
       </div>
     </div>

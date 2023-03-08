@@ -5,8 +5,8 @@
         <!-- formulario de habilidad-->
         <form [formGroup]="form" (ngSubmit)="onEnviar($event)" name="habilidadesForm"> 
         <div class="modal-body">
+          <h5 class="modal-title" id="skillModalAdd" >Agregar Habilidad</h5>
                 <div class="mb-3">
-                  <label for="habilidadNombre" class="form-label">Agregar Habilidad</label>
                   <input type="text" class="form-control"  placeholder="Nombre nuevo" formControlName="habilidad" [ngClass]="{'is-invalid': Habilidad.errors && Habilidad.touched, 'is-valid': !Habilidad.errors && Habilidad.touched}">
                   <div *ngIf="Habilidad.errors && Habilidad.touched">    
                     <p *ngIf="Habilidad.hasError('required')" class="text-danger">

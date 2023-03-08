@@ -22,4 +22,4 @@ Este proyecto es una <b>API REST</b>.
 * **Acosta Manuel (Manunaki Producciones)** - *Diseño y Desarrollo del Sistema*
 
 ## Contacto 📱
-* Gmail: manuacostaok@gmail.com_
+* Gmail: manuacostaok@gmail.com
